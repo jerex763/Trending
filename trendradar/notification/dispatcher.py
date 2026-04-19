@@ -764,7 +764,7 @@ class NotificationDispatcher:
                 proxy_url=proxy_url,
                 mode=mode,
                 account_label=account_label,
-                batch_size=self.config.get("MESSAGE_BATCH_SIZE", 4000),
+                batch_size=self.config.get("GENERIC_WEBHOOK_BATCH_SIZE", 1900),
                 batch_interval=self.config.get("BATCH_SEND_INTERVAL", 1.0),
                 split_content_func=self.split_content_func,
                 rss_items=rss_items,
@@ -797,4 +797,3 @@ class NotificationDispatcher:
             custom_smtp_port=self.config.get("EMAIL_SMTP_PORT", ""),
             get_time_func=self.get_time_func,
         )
-

@@ -1278,7 +1278,7 @@ def send_to_generic_webhook(
     mode: str = "daily",
     account_label: str = "",
     *,
-    batch_size: int = 4000,
+    batch_size: int = 1900,
     batch_interval: float = 1.0,
     split_content_func: Optional[Callable] = None,
     rss_items: Optional[list] = None,
@@ -1299,7 +1299,7 @@ def send_to_generic_webhook(
         proxy_url: 代理 URL（可选）
         mode: 报告模式 (daily/current)
         account_label: 账号标签（多账号时显示）
-        batch_size: 批次大小（字节）
+        batch_size: 批次大小（字节）。默认值控制在 Discord 2000 字符限制内
         batch_interval: 批次发送间隔（秒）
         split_content_func: 内容分批函数
         rss_items: RSS 统计条目列表（可选，用于合并推送）
@@ -1337,7 +1337,7 @@ def send_to_generic_webhook(
 
     # 获取分批内容
     # 使用 'wework' 作为 format_type 以获取 markdown 格式的通用输出
-    # 预留一定空间给模板外壳
+    # 预留一定空间给模板外壳，避免 JSON 模板额外字符导致超限
     template_overhead = 200
     batches = split_content_func(
         report_data, "wework", update_info, max_bytes=batch_size - template_overhead, mode=mode,

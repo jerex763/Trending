@@ -79,7 +79,7 @@ _CHANNEL_BATCH_SIZES_DEFAULT = {
     "ntfy": 3800,       # 严格 4KB 限制（ntfy 代码默认值）
     "bark": 4000,       # config.yaml: advanced.batch_size.bark
     "slack": 4000,      # config.yaml: advanced.batch_size.slack
-    "generic_webhook": 4000,
+    "generic_webhook": 1900,  # Discord content 限制 2000 字符
 }
 
 # 显示最新消息在前的渠道，批次需反序发送

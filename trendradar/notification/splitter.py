@@ -125,6 +125,7 @@ DEFAULT_BATCH_SIZES = {
     "dingtalk": 20000,
     "feishu": 29000,
     "ntfy": 3800,
+    "generic_webhook": 1900,
     "default": 4000,
 }
 
